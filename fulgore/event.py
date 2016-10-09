@@ -24,8 +24,11 @@ mqtt = MQTT(MQTT_HOST, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD)
 mqtt.connect()
 
 while(1):
-    mqtt.client.publish("sensors/dht", json.dumps(dht.read()))
-    mqtt.client.publish("sensors/ldr", json.dumps(ldr.read()))
+    dht_read = dht.read()
+
+    mqtt.client.publish("sensors/temperature", json.dumps(dht_read["temperature"]))
+    mqtt.client.publish("sensors/humidity", json.dumps(dht_read["humidity"]))
+    mqtt.client.publish("sensors/luminosity", json.dumps(ldr.read()))
     mqtt.client.publish("sensors/presence", json.dumps(presence.read()))
 
     time.sleep(1)

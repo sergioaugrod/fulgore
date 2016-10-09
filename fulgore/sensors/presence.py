@@ -4,4 +4,4 @@ class Presence:
     PIN = 22
 
     def read(self):
-        return { "value": GPIO.input(Presence.PIN) }
+        return GPIO.input(Presence.PIN)

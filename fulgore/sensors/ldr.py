@@ -4,4 +4,4 @@ class LDR:
     PIN = 27
 
     def read(self):
-        return { "value": GPIO.input(LDR.PIN) }
+        return GPIO.input(LDR.PIN)
